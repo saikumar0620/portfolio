@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
-/* ============================================
-   CUSTOM THEME - Beige & Dark Grey
-   ============================================ */
+/* ============================================================
+   DESIGN SYSTEM — Saikumar Bammidi Portfolio
+   Token-first approach: all colours, sizes & animations here.
+   ============================================================ */
 
 @theme {
-  /* Beige palette */
-  --color-beige-50: #fdfcfa;
+
+  /* ── Beige palette ── */
+  --color-beige-50:  #fdfcfa;
   --color-beige-100: #f9f5ef;
   --color-beige-200: #f0e8da;
   --color-beige-300: #e5d7c0;
@@ -17,8 +19,8 @@
   --color-beige-800: #6d5836;
   --color-beige-900: #4a3c25;
 
-  /* Dark Grey palette */
-  --color-dark-50: #f5f5f5;
+  /* ── Dark grey palette ── */
+  --color-dark-50:  #f5f5f5;
   --color-dark-100: #e0e0e0;
   --color-dark-200: #b0b0b0;
   --color-dark-300: #808080;
@@ -29,100 +31,98 @@
   --color-dark-800: #171717;
   --color-dark-900: #0d0d0d;
 
-  /* Accent */
-  --color-accent: #c4a97d;
+  /* ── Brand accent ── */
+  --color-accent:       #c4a97d;
   --color-accent-hover: #b08f5c;
 
-  /* Fonts */
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* ── Typography ── */
+  --font-heading: 'Outfit',         sans-serif;
+  --font-body:    'Inter',          sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
 
-  /* Animations */
-  --animate-fade-in: fade-in 0.6s ease-out forwards;
-  --animate-slide-up: slide-up 0.6s ease-out forwards;
-  --animate-slide-right: slide-right 0.5s ease-out forwards;
-  --animate-scale-in: scale-in 0.4s ease-out forwards;
-  --animate-float: float 6s ease-in-out infinite;
-  --animate-glow: glow 2s ease-in-out infinite alternate;
+  /* ── Animations ── */
+  --animate-fade-in:   fade-in   0.6s ease-out forwards;
+  --animate-slide-up:  slide-up  0.6s ease-out forwards;
+  --animate-scale-in:  scale-in  0.45s ease-out forwards;
+  --animate-float:     float     6s   ease-in-out infinite;
+  --animate-glow:      glow      2.4s ease-in-out infinite alternate;
 }
 
-/* ============================================
+/* ============================================================
    KEYFRAMES
-   ============================================ */
+   ============================================================ */
 
 @keyframes fade-in {
   from { opacity: 0; }
-  to { opacity: 1; }
+  to   { opacity: 1; }
 }
 
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slide-right {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0);    }
 }
 
 @keyframes scale-in {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1);    }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%, 100% { transform: translateY(0);     }
+  50%       { transform: translateY(-18px); }
 }
 
 @keyframes glow {
-  from { box-shadow: 0 0 20px rgba(196, 169, 125, 0.15); }
-  to { box-shadow: 0 0 40px rgba(196, 169, 125, 0.35); }
+  from { box-shadow: 0 0 18px rgba(196,169,125,0.13); }
+  to   { box-shadow: 0 0 38px rgba(196,169,125,0.32); }
 }
 
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
-}
-
-@keyframes blink {
-  0%, 100% { border-color: transparent; }
-  50% { border-color: var(--color-accent); }
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
 }
 
 @keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
 }
 
-/* ============================================
-   BASE STYLES
-   ============================================ */
+/* ============================================================
+   BASE RESET & GLOBAL
+   ============================================================ */
 
-* {
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;  /* new stacking context — fixes z-index bleed */
 }
 
 body {
+  width: 100%;
+  min-height: 100vh;
   font-family: var(--font-body);
-  transition: background-color 0.4s ease, color 0.4s ease;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Light mode (default) */
+/* Light mode */
 body.light {
   background-color: var(--color-beige-50);
   color: var(--color-dark-800);
@@ -134,55 +134,51 @@ body.dark {
   color: var(--color-beige-100);
 }
 
-/* ============================================
-   SCROLLBAR STYLING
-   ============================================ */
+/* ============================================================
+   SCROLLBAR
+   ============================================================ */
 
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
+::-webkit-scrollbar       { width: 7px; }
+::-webkit-scrollbar-track { background: transparent; }
 
 body.light::-webkit-scrollbar-thumb {
   background: var(--color-beige-400);
   border-radius: 10px;
 }
-
 body.dark::-webkit-scrollbar-thumb {
   background: var(--color-dark-500);
   border-radius: 10px;
 }
 
-/* ============================================
-   SELECTION STYLING
-   ============================================ */
+/* ============================================================
+   SELECTION
+   ============================================================ */
 
 ::selection {
   background-color: var(--color-accent);
   color: var(--color-dark-900);
 }
 
-/* ============================================
+/* ============================================================
    UTILITY CLASSES
-   ============================================ */
+   ============================================================ */
 
+/* Glassmorphism */
 .glass-light {
-  background: rgba(253, 252, 250, 0.7);
+  background: rgba(253,252,250,0.72);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(228, 215, 192, 0.4);
+  border: 1px solid rgba(228,215,192,0.38);
 }
 
 .glass-dark {
-  background: rgba(23, 23, 23, 0.7);
+  background: rgba(23,23,23,0.72);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(64, 64, 64, 0.4);
+  border: 1px solid rgba(64,64,64,0.38);
 }
 
+/* Gradient text */
 .text-gradient {
   background: linear-gradient(135deg, var(--color-accent), var(--color-beige-600));
   -webkit-background-clip: text;
@@ -190,18 +186,19 @@ body.dark::-webkit-scrollbar-thumb {
   background-clip: text;
 }
 
+/* Hover lift shorthand */
 .hover-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .hover-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.13);
 }
 
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-.stagger-6 { animation-delay: 0.6s; }
+/* Animation stagger helpers */
+.stagger-1 { animation-delay: 0.08s; }
+.stagger-2 { animation-delay: 0.16s; }
+.stagger-3 { animation-delay: 0.26s; }
+.stagger-4 { animation-delay: 0.36s; }
+.stagger-5 { animation-delay: 0.46s; }
+.stagger-6 { animation-delay: 0.56s; }
