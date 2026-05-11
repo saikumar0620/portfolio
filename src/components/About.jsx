@@ -63,14 +63,14 @@ export default function About() {
         </div>
 
         {/* ── Two-column grid ──
-            Desktop: [260px sidebar] [1fr content]
+            Desktop: 12-column grid (4 cols profile, 8 cols content)
             Tablet/Mobile: single column stacked        */}
-        <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr] gap-6 xl:gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
 
           {/* ════════════════════════════════
-              LEFT — Profile card (fixed width)
+              LEFT — Profile card
               ════════════════════════════════ */}
-          <aside className={`rounded-2xl overflow-hidden ${card}`} style={reveal(100)}>
+          <aside className={`flex flex-col rounded-2xl overflow-hidden h-full lg:col-span-4 xl:col-span-4 ${card}`} style={reveal(100)}>
 
             {/* photo — square aspect */}
             <div className="relative w-full aspect-square bg-beige-200 overflow-hidden">
@@ -157,10 +157,10 @@ export default function About() {
           {/* ════════════════════════════════
               RIGHT — Bio + stats + feature grid
               ════════════════════════════════ */}
-          <div className="flex flex-col gap-5 min-w-0">
+          <div className="flex flex-col gap-6 min-w-0 h-full lg:col-span-8 xl:col-span-8">
 
             {/* Bio card */}
-            <div className={`rounded-2xl p-6 lg:p-7 ${card}`} style={reveal(180)}>
+            <div className={`flex flex-col justify-center flex-1 rounded-2xl p-6 lg:p-8 ${card}`} style={reveal(180)}>
               <h3 className={`font-heading font-semibold text-base mb-3 ${strong}`}>
                 About Me
               </h3>
@@ -193,11 +193,11 @@ export default function About() {
             </div>
 
             {/* Highlight cards — 2×2 equal-height grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {highlights.map(({ icon: Icon, title, desc }, i) => (
                 <div
                   key={title}
-                  className={`group flex flex-col gap-3 rounded-2xl p-5 border transition-all duration-300 hover:-translate-y-1 ${
+                  className={`group flex flex-col gap-3 rounded-2xl p-6 border transition-all duration-300 hover:-translate-y-1 h-full ${
                     isDark
                       ? 'bg-dark-800/60 border-white/[0.07] hover:border-accent/35 hover:bg-dark-800/80 hover:shadow-lg hover:shadow-accent/5'
                       : 'bg-white border-beige-200 hover:border-beige-400 hover:shadow-lg hover:shadow-beige-200/40'

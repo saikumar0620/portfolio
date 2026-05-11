@@ -47,12 +47,12 @@ export default function Navbar() {
       <div
         className={`mx-auto flex items-center justify-between transition-all duration-500 ${
           scrolled
-            ? `max-w-4xl rounded-full px-5 py-2.5 border backdrop-blur-xl ${
+            ? `max-w-5xl rounded-full px-6 py-3 border backdrop-blur-xl mt-4 ${
                 isDark
                   ? 'bg-dark-800/85 border-white/10 shadow-xl shadow-black/40'
                   : 'bg-white/85 border-beige-200 shadow-xl shadow-beige-300/20'
               }`
-            : 'max-w-6xl px-4 sm:px-6 py-5 bg-transparent'
+            : 'max-w-6xl px-4 sm:px-6 py-6 bg-transparent'
         }`}
       >
 

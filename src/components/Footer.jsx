@@ -20,9 +20,9 @@ export default function Footer() {
             isDark ? 'text-beige-200/38' : 'text-dark-400'
           }`}
         >
-          © {year} {personalInfo.name}. Built with
-          <Heart size={13} className="text-accent fill-accent" />
-          & React
+         <p className="text-sm text-muted-foreground">
+  © {year} {personalInfo.name}. Designed & developed with React.
+</p>
         </p>
 
         {/* links */}

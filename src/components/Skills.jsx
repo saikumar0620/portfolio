@@ -39,7 +39,7 @@ export default function Skills() {
         </div>
 
         {/* ── Skills grid — 3 cols on lg, 2 on sm, 1 on mobile ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-8">
           {skills.map((skill, i) => (
             <div
               key={skill.name}
@@ -88,15 +88,15 @@ export default function Skills() {
                 </div>
 
                 {/* track */}
-                <div className={`w-full h-[6px] rounded-full overflow-hidden ${
+                <div className={`w-full h-2 rounded-full overflow-hidden shadow-inner ${
                   isDark ? 'bg-white/[0.06]' : 'bg-beige-100'
                 }`}>
                   {/* fill */}
                   <div
                     className={`h-full rounded-full transition-all duration-1000 ease-out ${
                       isDark
-                        ? 'bg-gradient-to-r from-accent/80 via-accent to-beige-400'
-                        : 'bg-gradient-to-r from-beige-500 to-accent'
+                        ? 'bg-gradient-to-r from-accent/80 via-accent to-beige-400 shadow-[0_0_10px_rgba(196,169,125,0.4)]'
+                        : 'bg-gradient-to-r from-beige-500 to-accent shadow-[0_0_10px_rgba(196,169,125,0.3)]'
                     }`}
                     style={{ width: isVisible ? `${skill.level}%` : '0%' }}
                   />
