@@ -13,7 +13,7 @@ export default function BackToTop() {
       }
     };
 
-    window.addEventListener('scroll', toggleVisibility);
+    window.addEventListener('scroll', toggleVisibility, { passive: true });
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
@@ -28,8 +28,10 @@ export default function BackToTop() {
     <button
       onClick={scrollToTop}
       aria-label="Back to top"
+      className={`fixed bottom-8 right-8 z-50 p-4 bg-[var(--text-strong)] text-[var(--bg-primary)] border border-[var(--border)] transition-all duration-500 hover:scale-110 active:scale-90 hover:border-[var(--accent)] ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
+        }`}
     >
-      <ArrowUp />
+      <ArrowUp size={20} />
     </button>
   );
 }

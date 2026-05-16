@@ -1,151 +1,75 @@
-import { useState } from 'react';
 import { personalInfo } from '../data/portfolioData';
-import { Mail, MapPin, Send, ArrowUpRight } from 'lucide-react';
-import { GithubIcon, LinkedinIcon } from './icons/SocialIcons';
+import { Mail, MessageSquare, ArrowRight } from 'lucide-react';
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    const subject = encodeURIComponent(`Portfolio Contact from ${formData.name}`);
-    const body = encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`);
-    window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`;
-    setTimeout(() => setIsSubmitting(false), 1000);
-  };
-
-  const handleChange = (e) =>
-    setFormData((p) => ({ ...p, [e.target.name]: e.target.value }));
-
   return (
-    <section id="contact">
-      <div />
-
-      <div>
-        <div>
-          <span>
-            // Contact
-          </span>
-          <h2>
-            Let's Work Together
-          </h2>
-          <div />
-          <p>
-            Have a project in mind or just want to say hello? I'd love to connect.
-          </p>
+    <section id="contact" className="py-24 bg-[var(--bg-primary)]">
+      <div className="container mx-auto px-6">
+        <div className="section-header">
+          <span className="section-header-comment">// Contact</span>
+          <h2 className="section-header-title">Let's Collaborate</h2>
+          <div className="h-[1px] w-32 bg-[var(--accent)] opacity-20 mt-4" />
         </div>
 
-        <div>
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
-            <div>
-              <h3>
-                Get in Touch
-              </h3>
-              <div>
-                {[
-                  { icon: Mail, text: personalInfo.email, href: `mailto:${personalInfo.email}`, truncate: true },
-                  { icon: MapPin, text: personalInfo.location, href: null },
-                ].map(({ icon: Icon, text, href, truncate }) => {
-                  const inner = (
-                    <>
-                      <div>
-                        <Icon />
-                      </div>
-                      <span>{text}</span>
-                    </>
-                  );
-                  return href
-                    ? <a key={text} href={href}>{inner}</a>
-                    : <div key={text}>{inner}</div>;
-                })}
-              </div>
-            </div>
+            <p className="text-xl text-[var(--text-faint)] font-light leading-relaxed mb-12">
+              I'm always interested in hearing about new projects and opportunities.
+              Whether you have a question or just want to say hi, my inbox is open.
+            </p>
 
-            <div>
-              <h3>
-                Social Links
-              </h3>
-              <div>
-                {[
-                  { Icon: GithubIcon, label: 'GitHub', href: personalInfo.socials.github, sub: 'saikumar0620' },
-                  { Icon: LinkedinIcon, label: 'LinkedIn', href: personalInfo.socials.linkedin, sub: 'saikumar-bammidi' },
-                ].map(({ Icon, label, href, sub }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <div>
-                      <Icon />
-                      <div>
-                        <div>{label}</div>
-                        <div>{sub}</div>
-                      </div>
-                    </div>
-                    <ArrowUpRight />
-                  </a>
-                ))}
-              </div>
+            <div className="space-y-6">
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="flex items-center gap-4 p-6 bg-[var(--bg-secondary)] border border-[var(--border)] group hover:border-[var(--accent)] transition-all duration-500"
+              >
+                <div className="p-3 bg-[var(--bg-primary)] text-[var(--accent)]">
+                  <Mail size={24} />
+                </div>
+                <div>
+                  <span className="block text-[10px] uppercase tracking-widest font-bold text-[var(--text-faint)] mb-1">Email Me</span>
+                  <span className="text-[var(--text-strong)] font-bold">{personalInfo.email}</span>
+                </div>
+                <ArrowRight className="ml-auto text-[var(--border)] group-hover:text-[var(--accent)] group-hover:translate-x-2 transition-all" />
+              </a>
             </div>
           </div>
 
-          <div>
-            <form onSubmit={handleSubmit}>
-              <h3>
-                Send a Message
-              </h3>
-
-              <div className="grid sm:grid-cols-2 gap-4 mb-4">
-                {[
-                  { id: 'contact-name', name: 'name', type: 'text', label: 'Your Name', ph: 'Saikumar' },
-                  { id: 'contact-email', name: 'email', type: 'email', label: 'Email Address', ph: 'you@email.com' },
-                ].map(({ id, name, type, label, ph }) => (
-                  <div key={id}>
-                    <label htmlFor={id}>
-                      {label}
-                    </label>
-                    <input
-                      id={id}
-                      name={name}
-                      type={type}
-                      required
-                      value={formData[name]}
-                      onChange={handleChange}
-                      placeholder={ph}
-                    />
-                  </div>
-                ))}
-              </div>
-
-              <div>
-                <label htmlFor="contact-message">
-                  Message
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  rows={6}
-                  required
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell me about your project or just say hello..."
+          <form className="space-y-8 bg-[var(--bg-secondary)] p-8 md:p-12 border border-[var(--border)]">
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-widest font-bold text-[var(--text-strong)]">Name</label>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  className="w-full bg-transparent border-b border-[var(--border)] py-3 outline-none focus:border-[var(--accent)] transition-all duration-500 text-[var(--text-strong)] placeholder:text-[var(--text-faint)]/20"
                 />
               </div>
-
-              <button
-                id="contact-submit"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                <Send />
-                {isSubmitting ? 'Sending…' : 'Send Message'}
-              </button>
-            </form>
-          </div>
-
+              <div className="space-y-2">
+                <label className="text-[10px] uppercase tracking-widest font-bold text-[var(--text-strong)]">Email</label>
+                <input
+                  type="email"
+                  placeholder="hello@example.com"
+                  className="w-full bg-transparent border-b border-[var(--border)] py-3 outline-none focus:border-[var(--accent)] transition-all duration-500 text-[var(--text-strong)] placeholder:text-[var(--text-faint)]/20"
+                />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <label className="text-[10px] uppercase tracking-widest font-bold text-[var(--text-strong)]">Message</label>
+              <textarea
+                rows="4"
+                placeholder="Tell me about your project..."
+                className="w-full bg-transparent border-b border-[var(--border)] py-3 outline-none focus:border-[var(--accent)] transition-all duration-500 text-[var(--text-strong)] resize-none placeholder:text-[var(--text-faint)]/20"
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              className="btn-arch w-full bg-[var(--text-strong)] !text-[var(--bg-primary)] flex items-center justify-center gap-3"
+            >
+              <span>Send Message</span>
+              <MessageSquare size={14} />
+            </button>
+          </form>
         </div>
       </div>
     </section>

@@ -19,110 +19,95 @@ const stats = [
 export default function About() {
   const [imgLoaded, setImgLoaded] = useState(false);
   return (
-    <section id="about">
-      <div />
-      <div>
-        <div>
-          <span>
-            // About Me
-          </span>
-          <h2>
-            Get To Know Me
-          </h2>
-          <div />
+    <section id="about" className="py-24 bg-[var(--bg-primary)]">
+      <div className="container mx-auto px-6">
+        <div className="section-header">
+          <span className="section-header-comment">// About Me</span>
+          <h2 className="section-header-title">Get To Know Me</h2>
+          <div className="h-[1px] w-32 bg-[var(--accent)] opacity-20 mt-4" />
         </div>
-        <div>
-          <aside>
-            <div>
-              <div />
-              <img
-                src="/profile.png"
-                alt="Saikumar Bammidi"
-                onLoad={() => setImgLoaded(true)}
-              />
+
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          {/* Profile Sidebar */}
+          <aside className="lg:col-span-4 lg:sticky lg:top-28 space-y-8">
+            <div className="relative group max-w-[300px] mx-auto lg:mx-0">
+              <div className="accent-float translate-x-6 translate-y-6 opacity-20"></div>
+              <div className="img-frame grayscale hover:grayscale-0 group aspect-[4/5]">
+                <img
+                  src="/profile.png"
+                  alt="Saikumar Bammidi"
+                  onLoad={() => setImgLoaded(true)}
+                  className={`w-full h-full object-cover transition-all duration-1000 ${imgLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}
+                />
+              </div>
             </div>
-            <div>
-              <div>
-                <h3>
+
+            <div className="space-y-4">
+              <div className="border-l-2 border-[var(--accent)] pl-4">
+                <h3 className="text-xl font-bold text-[var(--text-strong)] uppercase tracking-tighter">
                   {personalInfo.name}
                 </h3>
-                <p>
+                <p className="text-[var(--accent)] font-mono text-sm">
                   {personalInfo.role}
                 </p>
               </div>
-              <div>
+              <div className="space-y-2">
                 {[
                   { icon: MapPin, text: personalInfo.location },
-                  { icon: Mail, text: personalInfo.email, truncate: true },
-                ].map(({ icon: Icon, text, truncate }) => (
-                  <div key={text}>
-                    <Icon />
+                  { icon: Mail, text: personalInfo.email },
+                ].map(({ icon: Icon, text }) => (
+                  <div key={text} className="flex items-center gap-3 text-sm text-[var(--text-faint)]">
+                    <Icon size={16} className="text-[var(--accent)]" />
                     <span>{text}</span>
                   </div>
                 ))}
               </div>
-              <div />
-              <div>
-                <div>
-                  {[
-                    { icon: GithubIcon, href: personalInfo.socials.github, label: 'GitHub' },
-                    { icon: LinkedinIcon, href: personalInfo.socials.linkedin, label: 'LinkedIn' },
-                  ].map(({ icon: Icon, href, label }) => (
-                    <a
-                      key={label}
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Icon />
-                      {label}
-                    </a>
-                  ))}
-                </div>
-                <a
-                  href={personalInfo.resumeUrl}
-                  download
-                >
-                  <Download />
-                  Download CV
-                </a>
-              </div>
+              <a
+                href={personalInfo.resumeUrl}
+                download
+                className="btn-arch inline-flex items-center gap-2 py-3 px-6"
+              >
+                <Download size={14} />
+                Download CV
+              </a>
             </div>
           </aside>
-          <div>
-            <div>
-              <h3>
-                About Me
+
+          {/* Main Content Area */}
+          <div className="lg:col-span-8 space-y-12">
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold text-[var(--text-strong)] tracking-tight">
+                My Professional Philosophy
               </h3>
-              <p>
+              <p className="text-lg text-[var(--text-faint)] leading-relaxed font-light">
                 {personalInfo.bio}
               </p>
-              <p>
+              <p className="text-lg text-[var(--text-faint)] leading-relaxed font-light italic">
                 I believe great frontend development is a balance of{' '}
-                <span>aesthetics</span>,{' '}
-                <span>performance</span>, and{' '}
-                <span>usability</span>.
+                <span className="text-[var(--text-strong)] font-medium">aesthetics</span>,{' '}
+                <span className="text-[var(--text-strong)] font-medium">performance</span>, and{' '}
+                <span className="text-[var(--text-strong)] font-medium">usability</span>.
               </p>
-              <div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 pt-8 border-t border-[var(--border)]">
                 {stats.map(({ number, label }) => (
-                  <div key={label}>
-                    <span>
+                  <div key={label} className="bg-[var(--bg-secondary)] border border-[var(--border)] p-6 text-center">
+                    <span className="block text-3xl font-bold text-[var(--accent)] tracking-tighter">
                       {number}
                     </span>
-                    <span>{label}</span>
+                    <span className="text-[10px] uppercase tracking-widest text-[var(--text-faint)] font-bold">{label}</span>
                   </div>
                 ))}
               </div>
             </div>
-            <div>
+            <div className="grid sm:grid-cols-2 gap-6">
               {highlights.map(({ icon: Icon, title, desc }, i) => (
-                <div key={title}>
-                  <div>
-                    <Icon />
+                <div key={title} className="flex gap-6 p-8 bg-[var(--bg-secondary)] border border-[var(--border)] hover:border-[var(--accent)] transition-all duration-500 group">
+                  <div className="mt-1 transition-transform group-hover:-translate-y-1">
+                    <Icon size={24} className="text-[var(--accent)]" />
                   </div>
                   <div>
-                    <h4>{title}</h4>
-                    <p>{desc}</p>
+                    <h4 className="font-bold text-[var(--text-strong)] uppercase tracking-wide text-sm">{title}</h4>
+                    <p className="text-xs text-[var(--text-faint)] mt-1 font-light leading-relaxed">{desc}</p>
                   </div>
                 </div>
               ))}

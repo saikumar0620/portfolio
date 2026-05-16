@@ -1,33 +1,190 @@
 @import "tailwindcss";
 
-/* ============================================================
-   ROOT TOKENS
-============================================================ */
 :root {
+  /* Light Mode - Beige Primary */
+  --bg-primary: #f7f3f0; /* Soft Bone Beige */
+  --bg-secondary: #e8e4d9; /* Slightly deeper beige for cards */
+  --text-strong: #1a1a1a; /* Deep Charcoal Gray */
+  --text-faint: #6b6b6b; /* Muted Gray */
+  --accent: #a68a64; /* Muted Bronze/Gold */
+  --border: rgba(26, 26, 26, 0.1);
 }
-/* ============================================================
-   BASE
-============================================================ */
-@layer base {
-}
-/* ============================================================
-   KEYFRAMES
-============================================================ */
-/* ============================================================
-   UTILITIES
-============================================================ */
-@layer utilities {
-}
-/* ============================================================
-   ACCESSIBILITY
-============================================================ */
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
+[data-theme="dark"] {
+  /* Dark Mode - Dark Gray Primary */
+  --bg-primary: #121212; /* Near Black Gray */
+  --bg-secondary: #1e1e1e; /* Card Gray */
+  --text-strong: #f7f3f0; /* Light Beige Text */
+  --text-faint: #a0a0a0; /* Dimmed Gray */
+  --accent: #d9d2c5; /* Light Beige Accent */
+  --border: rgba(247, 243, 240, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Premium Grain Texture */
+html::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--bg-primary);
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-strong);
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Floating Accent Border Logic */
+.accent-float {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  @apply -z-10 transition-transform duration-700 pointer-events-none;
+  background-color: var(--accent);
+  opacity: 0.12;
+}
+
+/* Rigid Image Frame */
+.img-frame {
+  @apply relative overflow-hidden transition-all duration-700;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border);
+}
+
+/* Architectural Blueprint Grid */
+.blueprint-grid {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  @apply pointer-events-none;
+  opacity: 0.03;
+  background-image: radial-gradient(var(--text-strong) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Smooth Micro-interactions */
+.interactive-element {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.interactive-element:hover {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+/* Global Card Style */
+.card-neat {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+/* High-Impact Typography */
+.text-huge {
+  @apply text-6xl font-bold tracking-tighter;
+  line-height: 0.85;
+}
+
+@media (min-width: 768px) {
+  .text-huge {
+    @apply text-8xl;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-huge {
+    @apply text-9xl;
+  }
+}
+
+/* Architectural Button Style */
+.btn-arch {
+  @apply px-8 py-4 border active:scale-95
+         transition-all duration-500 uppercase tracking-widest text-[10px] font-bold;
+  border-color: var(--text-strong);
+  color: var(--text-strong);
+}
+
+.btn-arch:hover {
+  background-color: var(--text-strong);
+  color: var(--bg-primary);
+}
+
+/* Elegant Navbar Links */
+.nav-link {
+  @apply relative py-1 transition-colors duration-300;
+  color: var(--text-faint);
+}
+
+.nav-link:hover {
+  color: var(--text-strong);
+}
+
+.nav-link::after {
+  content: "";
+  @apply absolute bottom-0 left-0 w-0 h-[1px] transition-all duration-500 ease-in-out;
+  background-color: var(--accent);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  @apply w-full;
+}
+
+.nav-link.active {
+  color: var(--text-strong);
+}
+
+/* Standardized Section Headers */
+.section-header {
+  @apply mb-16 border-l-2 pl-6;
+  border-color: var(--accent);
+}
+
+.section-header-comment {
+  @apply font-mono text-sm tracking-widest uppercase block mb-2;
+  color: var(--accent);
+}
+
+.section-header-title {
+  @apply text-4xl font-bold tracking-tight;
+  color: var(--text-strong);
+}
+
+@media (min-width: 768px) {
+  .section-header-title {
+    @apply text-5xl;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-header-title {
+    @apply text-6xl;
   }
 }
