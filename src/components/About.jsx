@@ -13,7 +13,7 @@ const highlights = [
 const stats = [
   { number: '5+', label: 'Projects' },
   { number: '4+', label: 'Technologies' },
-  { number: '1+', label: 'Yr Exp.' },
+  { number: 'Fresher', label: 'Experience' },
 ];
 
 export default function About() {
@@ -68,7 +68,7 @@ export default function About() {
                 className="btn-arch inline-flex items-center gap-2 py-3 px-6"
               >
                 <Download size={14} />
-                Download CV
+                Download Resume
               </a>
             </div>
           </aside>

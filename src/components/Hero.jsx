@@ -90,7 +90,7 @@ export default function Hero() {
                 className="btn-arch inline-flex items-center gap-2"
               >
                 <Download size={14} />
-                Download CV
+                Download Resume
               </a>
             </div>
 

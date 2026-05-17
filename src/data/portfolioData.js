@@ -77,9 +77,8 @@ export const projects = [
     description:
       "A sleek, interactive multi-step form featuring a dynamic progress indicator, smooth step transitions, and form validation. Designed for an optimal user experience.",
     tech: ["HTML", "CSS", "JavaScript"],
-    image: "/multi-step-progressBar.png",
-    liveUrl:
-      "https://saikumar0620.github.io/Multi-step-Form-with-Progress-Indicator/",
+    image: "/multi-step-form.png",
+    liveUrl: "https://multi-step-form-with-progress-indic-beta.vercel.app/",
     githubUrl:
       "https://github.com/saikumar0620/Multi-step-Form-with-Progress-Indicator",
     featured: true,
@@ -111,19 +110,21 @@ export const projects = [
 export const education = [
   {
     degree: "Bachelor of Technology",
-    field: "Computer Science & Engineering",
-    institution: "University",
+    field: "Mechanical Engineering",
+    institution: "Aditya institiute of technology and management",
     year: "2021 - 2025",
-    description:
-      "Focused on web technologies, data structures, and software engineering principles. Developed multiple projects using modern frontend frameworks.",
+    description: `Motivated and detail-oriented Web Developer with a strong foundation in HTML, CSS, JavaScript, and
+ReactJs. Eager to apply academic knowledge and hands-on skills to build responsive, user-friendly web
+applications. Passionate about continuous learning, clean code practices, and contributing to innovative
+projects.`,
   },
 ];
 
 export const experience = [
   {
     role: "Frontend Developer",
-    type: "Projects & Freelance",
-    period: "2024 - Present",
+    type: "Projects & Internships",
+    period: "Fresher",
     description:
       "Building responsive web applications using React and modern CSS. Focused on creating pixel-perfect UIs with smooth animations and optimal performance.",
     highlights: [
