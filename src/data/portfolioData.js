@@ -84,17 +84,17 @@ export const projects = [
       "https://github.com/saikumar0620/Multi-step-Form-with-Progress-Indicator",
     featured: true,
   },
-  {
-    id: 3,
-    title: "Digital Wishes App",
-    description:
-      "A beautiful, interactive web application designed to create and share digital wishes. Features smooth CSS animations and fluid, responsive transitions.",
-    tech: ["HTML", "CSS", "JavaScript"],
-    image: "/digital-wishes.png",
-    liveUrl: "https://wishes-ashen.vercel.app",
-    githubUrl: "https://github.com/saikumar0620/wishes",
-    featured: false,
-  },
+  // {
+  //   id: 3,
+  //   title: "Digital Wishes App",
+  //   description:
+  //     "A beautiful, interactive web application designed to create and share digital wishes. Features smooth CSS animations and fluid, responsive transitions.",
+  //   tech: ["HTML", "CSS", "JavaScript"],
+  //   image: "/digital-wishes.png",
+  //   liveUrl: "https://wishes-ashen.vercel.app",
+  //   githubUrl: "https://github.com/saikumar0620/wishes",
+  //   featured: false,
+  // },
   {
     id: 4,
     title: "React Todo App",
