@@ -1,32 +1,32 @@
 import { useState, useEffect } from 'react';
 
 export default function ScrollProgress() {
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      const totalScroll = document.documentElement.scrollTop;
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scroll = `${totalScroll / windowHeight}`;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (height <= 0) {
+        setProgress(0);
+        return;
+      }
 
-      // Ensure scroll is a valid number and clamped between 0 and 1
-      // This prevents issues if windowHeight is 0 or calculation results in NaN
-      const clampedScroll = Math.min(1, Math.max(0, parseFloat(scroll) || 0));
-      setScrollProgress(clampedScroll);
+      const scrollPos = window.scrollY;
+      const scrollPercent = scrollPos / height;
+      setProgress(Math.min(1, Math.max(0, scrollPercent)));
     };
 
-    // Use passive: true for better scroll performance
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll); // Cleanup event listener
+    handleScroll(); // Initial check on mount
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    // Fixed container for the scroll progress bar
-    <div className="fixed top-0 left-0 w-full h-[2px] z-50 bg-[var(--bg-secondary)]">
-      {/* The actual progress bar, scaled horizontally */}
+    <div className="fixed top-0 left-0 w-full h-[2px] z-[100] pointer-events-none bg-[var(--bg-secondary)]">
       <div
-        className="h-full bg-[var(--accent)] transition-transform duration-100 ease-out"
-        style={{ transform: `scaleX(${scrollProgress})`, transformOrigin: '0 0' }}
+        className="h-full bg-[var(--accent)] transition-transform duration-150 ease-out origin-left"
+        style={{ transform: `scaleX(${progress})` }}
       />
     </div>
   );

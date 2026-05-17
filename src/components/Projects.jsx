@@ -7,7 +7,7 @@ import { GithubIcon } from './icons/SocialIcons';
  * Extracted for better readability and maintainability.
  */
 function ProjectCard({ project }) {
-  const { title, description, tech, githubUrl, liveUrl, featured } = project;
+  const { title, description, tech, githubUrl, liveUrl, featured, image } = project;
 
   return (
     <article className="group relative flex flex-col bg-[var(--bg-secondary)] border border-[var(--border)] transition-all duration-500 hover:border-[var(--accent)]">
@@ -15,11 +15,19 @@ function ProjectCard({ project }) {
       <div className="relative aspect-[16/10] bg-[var(--bg-primary)] flex items-center justify-center overflow-hidden border-b border-[var(--border)] group-hover:bg-[var(--bg-secondary)] transition-colors duration-700">
         <div className="blueprint-grid opacity-[0.04]" aria-hidden="true" />
 
-        <div className="transition-all duration-700 group-hover:scale-110 opacity-10 group-hover:opacity-30">
-          <svg className="w-16 h-16 text-[var(--text-strong)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={0.04} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
-          </svg>
-        </div>
+        {image ? (
+          <img
+            src={image}
+            alt={title}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          />
+        ) : (
+          <div className="transition-all duration-700 group-hover:scale-110 opacity-10 group-hover:opacity-30">
+            <svg className="w-16 h-16 text-[var(--text-strong)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={0.04} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
+            </svg>
+          </div>
+        )}
 
         {/* Hover Links Overlay */}
         <div className="absolute inset-0 bg-[var(--text-strong)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center gap-4">
