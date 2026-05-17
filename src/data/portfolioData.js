@@ -77,7 +77,7 @@ export const projects = [
     description:
       "A sleek, interactive multi-step form featuring a dynamic progress indicator, smooth step transitions, and form validation. Designed for an optimal user experience.",
     tech: ["HTML", "CSS", "JavaScript"],
-    image: "/multi-step-form.png",
+    image: "/multi-step-progressBar.png",
     liveUrl:
       "https://saikumar0620.github.io/Multi-step-Form-with-Progress-Indicator/",
     githubUrl:
