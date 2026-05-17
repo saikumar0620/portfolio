@@ -77,7 +77,7 @@ export const projects = [
     description:
       "A sleek, interactive multi-step form featuring a dynamic progress indicator, smooth step transitions, and form validation. Designed for an optimal user experience.",
     tech: ["HTML", "CSS", "JavaScript"],
-    image: "/multi-step-form.png",
+    image: "/multi-step-progressBar.png",
     liveUrl: "https://multi-step-form-with-progress-indic-beta.vercel.app/",
     githubUrl:
       "https://github.com/saikumar0620/Multi-step-Form-with-Progress-Indicator",
