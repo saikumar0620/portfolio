@@ -6,7 +6,7 @@ export const personalInfo = {
   bio: `I'm a passionate Frontend Developer who loves turning ideas into elegant, responsive, and user-friendly web applications. With a strong foundation in modern JavaScript and React, I focus on building interfaces that are not just functional, but delightful to use.`,
   email: "sai06.bammidi@gmail.com",
   location: "India",
-  resumeUrl: "/resume.pdf",
+  resumeUrl: "/resume_sai.pdf",
   socials: {
     github: "https://github.com/saikumar0620",
     linkedin: "https://www.linkedin.com/in/saikumar-bammidi-85a850318/",
